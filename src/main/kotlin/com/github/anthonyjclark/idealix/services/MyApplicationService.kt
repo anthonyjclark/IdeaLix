@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.anthonyjclark.idealix.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.anthonyjclark.idealix.MyBundle
 
 class MyApplicationService {
 
