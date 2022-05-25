@@ -1,18 +1,29 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin url="https://github.com/anthonyjclark/IdeaLix">
+
     <id>com.github.anthonyjclark.idealix</id>
+
     <name>IdeaLix</name>
-    <vendor>anthonyjclark</vendor>
+
+    <vendor url="anthonyjclark.com/">Anthony J. Clark</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.anthonyjclark.idealix.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.anthonyjclark.idealix.services.MyProjectService"/>
+        <statusBarWidgetFactory implementation="com.github.anthonyjclark.idealix.LixStatusBarFactory"/>
+        <editorFactoryListener implementation="com.github.anthonyjclark.idealix.LixEditorFactoryListener"/>
+        <postStartupActivity implementation="com.github.anthonyjclark.idealix.LixStartup"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.anthonyjclark.idealix.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <!-- TODO(ajc): use this com.github.anthonyjclark.idealix.LixStartup... -->
+        <action id="LixToggleAction" class="com.github.anthonyjclark.idealix.action.LixToggleEnableAction"
+                text="Enabled" description="This action will enable or disable the plugin."/>
+
+        <action id="LixCommandModeAction" class="com.github.anthonyjclark.idealix.action.LixCommandModeAction"
+                text="Command Mode" description="Enter (or stay in) command mode.">
+            <keyboard-shortcut first-keystroke="ESCAPE" keymap="Mac OS X 10.5+"/>
+        </action>
+    </actions>
+
 </idea-plugin>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="150 150 12 12" width="12" height="12">
+  <defs>
+    <clipPath id="inner_stroke_clip_path">
+      <path d="M 154 150 L 158 150 L 153 160 L 162 158 L 162 162 L 150 162 Z"/>
+    </clipPath>
+  </defs>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" fill="none" stroke-opacity="1" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Disabled">
+      <title>Disabled</title>
+      <g id="Graphic_7">
+        <path d="M 154 150 L 158 150 L 153 160 L 162 158 L 162 162 L 150 162 Z" fill="#ccc"/>
+        <path d="M 154 150 L 158 150 L 153 160 L 162 158 L 162 162 L 150 162 Z" stroke="#9a9a9a" stroke-linecap="round" stroke-linejoin="miter" stroke-width=".5" clip-path="url(#inner_stroke_clip_path)"/>
+      </g>
+    </g>
+  </g>
+</svg>
