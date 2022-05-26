@@ -2,7 +2,7 @@ package com.github.anthonyjclark.idealix
 
 import com.intellij.openapi.editor.Editor
 
-class LixEditorState(editor: Editor) {
+class LixEditorState(private val editor: Editor) {
 
     enum class LixEditorMode {
         Command,
@@ -10,17 +10,21 @@ class LixEditorState(editor: Editor) {
     }
 
     var mode: LixEditorMode = LixEditorMode.Command
-
-    //    var keymap: LixKeymap = LixKeymap()
     var keymap: LixEditorKeymapActions = LixEditorKeymapActions(editor)
 
+    init {
+        commandMode()
+    }
+
     fun commandMode() {
+        editor.settings.isBlockCursor = true
         mode = LixEditorMode.Command
         keymap.commandMode()
     }
 
     fun insertMode() {
-        mode = LixEditorMode.Insert
+        editor.settings.isBlockCursor = false
+        /**/mode = LixEditorMode.Insert
         keymap.insertMode()
     }
 

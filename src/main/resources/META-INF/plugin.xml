@@ -19,7 +19,6 @@
         <!-- TODO(ajc): use this com.github.anthonyjclark.idealix.LixStartup... -->
         <action id="LixToggleAction" class="com.github.anthonyjclark.idealix.action.LixToggleEnableAction"
                 text="Enabled" description="This action will enable or disable the plugin."/>
-
         <action id="LixCommandModeAction" class="com.github.anthonyjclark.idealix.action.LixCommandModeAction"
                 text="Command Mode" description="Enter (or stay in) command mode.">
             <keyboard-shortcut first-keystroke="ESCAPE" keymap="Mac OS X 10.5+"/>

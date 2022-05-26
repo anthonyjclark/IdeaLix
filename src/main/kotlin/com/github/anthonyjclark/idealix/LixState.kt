@@ -1,15 +1,14 @@
 package com.github.anthonyjclark.idealix
 
 import com.github.anthonyjclark.idealix.action.LixInsertModeAction
+import com.ibm.icu.text.CaseMap.Upper
 import com.intellij.ide.plugins.PluginManagerCore
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.IdeActions
+import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.extensions.PluginId
-import java.awt.event.KeyEvent
+import javax.swing.KeyStroke
 
 object LixState {
 
@@ -26,6 +25,17 @@ object LixState {
     val LIX_VERSION: String? = PluginManagerCore.getPlugin(PluginId.getId(LIX_ID))?.version
     val LOGGER: Logger = logger<LixState>()
 
+    private const val LOWER_LETTERS = "abcdefghijklmnopqrstuvwxyz"
+    private const val UPPER_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    private const val NUMBERS = "0123456789"
+    private const val PUNCTUATION = "`!@#$%^&*()_+~-=[]\\{}|;':\",./<>?"
+
+    private const val TYPED_KEYS = LOWER_LETTERS + UPPER_LETTERS + NUMBERS + PUNCTUATION
+    private val ALL_HANDLED_TYPED_KEYS = TYPED_KEYS.map { KeyStroke.getKeyStroke(it) }
+    private val ALL_KEYBOARD_SHORTCUTS = ALL_HANDLED_TYPED_KEYS.map { KeyboardShortcut(it, null) }
+    val SHORTCUT_SET = CustomShortcutSet(*ALL_KEYBOARD_SHORTCUTS.toTypedArray())
+    // TODO(ajc): two-key shortcuts?
+
     // ----------------------------------------------------------------
     //  __  __       _        _     _        ____  _        _
     // |  \/  |_   _| |_ __ _| |__ | | ___  / ___|| |_ __ _| |_ ___
@@ -36,19 +46,22 @@ object LixState {
 
     var enabled: Boolean = true
     var editorStates: HashMap<Editor, LixEditorState> = HashMap()
-    var commandKeymap: Map<Int, AnAction>
 
-    private val actionManager = ActionManager.getInstance()
+    // TODO(ajc): two-key shortcuts? (Char, Char)
+    var commandKeymap: Map<Char, AnAction>
+
 
     init {
+        val actionManager = ActionManager.getInstance()
+
         // TODO(ajc): load from file
-        // KeyStroke.getKeyStroke('w').keyCode
+
         commandKeymap = mapOf(
-            KeyEvent.VK_I to LixInsertModeAction(),
-            KeyEvent.VK_H to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_LEFT),
-            KeyEvent.VK_J to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_DOWN),
-            KeyEvent.VK_K to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_UP),
-            KeyEvent.VK_L to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_RIGHT),
+            'i' to LixInsertModeAction(),
+            'h' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_LEFT),
+            'j' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_DOWN),
+            'k' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_UP),
+            'l' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_RIGHT),
         )
     }
 }

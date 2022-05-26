@@ -9,17 +9,16 @@
 - popup link to settings (XDG)
 - popup link to GitHub
 - popup link to IDE settings (key conflicts?)
-- light edit mode
-- replace icon
-- update icon on toggle (need listener?)
 
 ### Long-term
 
 - keymap conflicts
+- update icon on toggle (need listener?)
+- light edit mode
 - macros
 - marks
 - how to test?
-- window border for mode
+- window border for mode (maybe cursor is good enough)
 - kak/vim/insert modes?
 - use JB macros
 - list of all actions: https://centic9.github.io/IntelliJ-Action-IDs/
@@ -40,28 +39,31 @@
 - jumping: type as much as you want hit enter, cycle
   - case-insensitive but not fuzzy
 - less focus on movement by character
-- modifiers: inner/around/next/previous/...
-  - after next word?
-- objects: word/Word/PartialWord/sentence/quotes/paragraph/block/function/class/...
-  - word/Word like vim
-  - partial word for snake and camel case
-- actions/(vs commands?): copy, paste, redo, undo, delete, format, 
-  - align-cursors, rename, multicursors
-  - case, shell, macros, join, indent/dedent, find next, find prev
-  - jump list, increment/decrement
-  - open above/below, repeat, comment
-  - search, save, goto (def)
 - helix config format
 - put paired actions next to one another (e.g., word/back, undo/redo)
-- switch to insert (e.g., i/I/a/A/o/O)
-- motions: find/till, beginning/end, first char
-- leader for commands
-  - like open file, find in files, center screen, tabs
-- movement: word/Word/paragraph/sentence/page/halfpage/quarterpage
 - pinky key hold modifiers?
-- D/C/Y
 - insertion mode modifier to execute commands? (e.g., Alt-J for J) vs crtl-o
 - https://github.com/machakann/vim-sandwich
+
+
+- selection actions (action selects some text)
+  - word, Word, PartialWord, sentence, quotes, paragraph, block, function, class
+  - find, till, beginning of line, end of line, first character of line
+  - modifiers: inner/around/next/previous/... 
+- command actions (action operates on selection or ignores selection)
+  - copy, paste, delete, undo, redo
+  - format, comment, change case, join, increment/decrement, rename
+  - repeat, macros, run shell command
+  - jump, search, next/previous, jump to tag
+  - multiple cursors: by line, search in selection, align cursors
+  - insert: at cursor, after, above, below, beginning, end
+  - screen motion: half page up/down, quarter page up/down, center
+  - switch editor tab
+  - open helpers (ctrl enter, option enter, shift shift, etc.)
+  - save, open file, find in files
+  - Note: some can be found under leader
+- shortcuts
+  - [command] till end of line (like vim D, C, and Y)
 
 ## Resources
 

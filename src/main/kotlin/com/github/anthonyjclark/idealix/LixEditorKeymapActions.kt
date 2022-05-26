@@ -1,33 +1,27 @@
 package com.github.anthonyjclark.idealix
 
-import com.github.anthonyjclark.idealix.LixState.commandKeymap
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CustomShortcutSet
 import com.intellij.openapi.actionSystem.ex.ActionUtil
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.DumbAwareAction
 import java.awt.event.KeyEvent
 
+// This single action handles all keyboard interaction when in command mode
 class LixEditorKeymapActions(private val editor: Editor) : DumbAwareAction() {
 
-    private val shortcutSet = CustomShortcutSet(*commandKeymap.keys.toTypedArray())
-
-    init {
-        commandMode()
-    }
-
     fun commandMode() {
-        registerCustomShortcutSet(shortcutSet, editor.contentComponent)
+        registerCustomShortcutSet(LixState.SHORTCUT_SET, editor.contentComponent)
     }
 
     fun insertMode() {
         unregisterCustomShortcutSet(editor.contentComponent)
+        // TODO(ajc): add insert mode keymap
+        //registerCustomShortcutSet()
     }
 
     override fun actionPerformed(e: AnActionEvent) {
-        val keyCode = (e.inputEvent as KeyEvent).keyCode
-        val action = commandKeymap[keyCode] ?: return
-
+        val keyEvent = e.inputEvent as KeyEvent
+        val action = LixState.commandKeymap[keyEvent.keyChar] ?: return
         ActionUtil.performActionDumbAware(action, e)
     }
 }
