@@ -44,6 +44,7 @@
 - pinky key hold modifiers?
 - insertion mode modifier to execute commands? (e.g., Alt-J for J) vs crtl-o
 - https://github.com/machakann/vim-sandwich
+- use capitals for immediate actions not acting on selection
 
 
 - selection actions (action selects some text)
@@ -64,6 +65,45 @@
   - Note: some can be found under leader
 - shortcuts
   - [command] till end of line (like vim D, C, and Y)
+- other
+  - find and replace
+  - build
+  - debugging
+
+
+
+- JetBrains shortcuts
+  - search everywhere (shift shift)
+  - find action (shift cmd a)
+  - intention actions (opt enter)
+  - navigate code issues (F2 and shift F2)
+  - recent files (cmd E)
+  - complete statement (shift cmd enter)
+  - reformat code (opt cmd L)
+  - invoke refactoring (ctrl T)
+  - extend/shrink selection (opt up/down)
+  - go to declaration (cmd B)
+  - find usages (opt F7)
+  - project window (cmd 1)
+  - version control (ctrl V)
+  - code completion (ctrl space)
+  - run anything (ctrl ctrl)
+- Xah Fly Keys
+  - unsplit and split (3 and 4)
+  - delete forward (5)
+  - select paragraph/line/word/quote (6/7/8/9)
+  - special move to beginning of line then indent then paragraph
+  - beginning of buffer (space h)
+  - end of buffer (space n)
+  - delete word left right (e and r)
+  - jump to matching bracket
+  - delete block of text
+  - delete blank line
+  - delete to end of line (space g)
+  - copy/cut all or region (space c/x)
+  - 
+
+
 
 ## Resources
 

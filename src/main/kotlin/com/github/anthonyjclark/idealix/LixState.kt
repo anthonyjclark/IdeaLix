@@ -1,13 +1,14 @@
 package com.github.anthonyjclark.idealix
 
 import com.github.anthonyjclark.idealix.action.LixInsertModeAction
-import com.ibm.icu.text.CaseMap.Upper
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.fileEditor.FileDocumentManager
+import java.io.File
 import javax.swing.KeyStroke
 
 object LixState {
@@ -24,6 +25,9 @@ object LixState {
     const val LIX_DISPLAY_NAME: String = "IdeaLix"
     val LIX_VERSION: String? = PluginManagerCore.getPlugin(PluginId.getId(LIX_ID))?.version
     val LOGGER: Logger = logger<LixState>()
+
+    // TODO(ajc): use XDG_CONFIG_HOME
+    const val LIX_CONFIG_FILEPATH = "/idealix.txt"
 
     private const val LOWER_LETTERS = "abcdefghijklmnopqrstuvwxyz"
     private const val UPPER_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -56,10 +60,11 @@ object LixState {
 
         // TODO(ajc): load from file
 
+
         commandKeymap = mapOf(
             'i' to LixInsertModeAction(),
             'h' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_LEFT),
-            'j' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_DOWN),
+            'j' to actionManager.getAction(IdeActions.ACTIONEDISELECT),
             'k' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_UP),
             'l' to actionManager.getAction(IdeActions.ACTION_EDITOR_MOVE_CARET_RIGHT),
         )

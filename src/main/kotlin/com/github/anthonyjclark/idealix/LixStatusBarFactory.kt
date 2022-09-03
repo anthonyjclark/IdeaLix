@@ -42,7 +42,7 @@ class LixStatusBarFactory : StatusBarWidgetFactory {
         override fun dispose() {}
         override fun getIcon(): Icon = if (LixState.enabled) EnabledIcon else DisabledIcon
 
-        override fun getClickConsumer(): Consumer<MouseEvent>? = Consumer<MouseEvent> { event ->
+        override fun getClickConsumer(): Consumer<MouseEvent> = Consumer<MouseEvent> { event ->
             val component = event.component
             val popup = LixInfoPopup.getPopup(DataManager.getInstance().getDataContext(component))
 
